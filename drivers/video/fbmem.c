@@ -969,6 +969,7 @@ fb_set_var(struct fb_info *info, struct fb_var_screeninfo *var)
 
 		if (!info->fbops->fb_check_var) {
 			*var = info->var;
+			var.reserved[4] = 60;
 			goto done;
 		}
 

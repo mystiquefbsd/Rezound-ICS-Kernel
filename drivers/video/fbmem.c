@@ -969,7 +969,6 @@ fb_set_var(struct fb_info *info, struct fb_var_screeninfo *var)
 
 		if (!info->fbops->fb_check_var) {
 			*var = info->var;
-			var.reserved[4] = 60;
 			goto done;
 		}
 
@@ -1070,6 +1069,7 @@ static long do_fb_ioctl(struct fb_info *info, unsigned int cmd,
 		if (!lock_fb_info(info))
 			return -ENODEV;
 		var = info->var;
+		var.reserved[4] = 60;
 		unlock_fb_info(info);
 
 		ret = copy_to_user(argp, &var, sizeof(var)) ? -EFAULT : 0;

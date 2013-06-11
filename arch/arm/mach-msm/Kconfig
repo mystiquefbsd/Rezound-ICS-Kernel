@@ -1559,6 +1559,13 @@ config MSM_MPDEC_DISABLED
       Build MPdecision into kernel with only control over
       screen on/off multi processor decisions by default.
 
+config MSM_MPDEC_INPUTBOOT_CPUMIN
+    bool "Enable kernel based mpdecision"
+    depends on MSM_MPDEC
+    default n
+    help
+        This pushes the cpu min speed to predefined values on input events.
+
 endchoice
 
 if CPU_FREQ_MSM
